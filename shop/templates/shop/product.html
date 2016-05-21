@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Детальная карточка товара {{ product.name }}</title>
+</head>
+<body>
+    {% if errors %}
+        <ul>
+            {% for error in errors %}
+                <li style="color: red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form method="post" action="">
+        {% csrf_token %}
+            <label>Название: </label><input maxlength="250" type="text" value="{{ product.name }}" name="name"/></br>
+            <label>Категория: </label>
+        <select name="category_id">
+            {% for category in categories %}
+                <option value="{{ category.id}}"
+                        {% if product.category == category %}
+                        selected
+                        {% endif %}>
+                {{ category.name }}
+                </option>
+            {% endfor %}
+        </select></br>
+            <label>Цена: </label><input type="number" value="{{ product.price }}" name="price"/>р.</br>
+            <label>Описание: </label><textarea name="description">{{ product.description }}</textarea></br>
+            <input type="submit" value="Сохранить" name="change_product"/>
+    </form>
+</body>
+</html>

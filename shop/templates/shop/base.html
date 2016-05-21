@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин</title>
+</head>
+<link href="{% static 'shop/style.css' %}" rel="stylesheet">
+<body>
+    <div class="left-column">
+        <form method="post" action="">
+            {% csrf_token %}
+            <input name="products_generate" type="submit" value="Сгенерировать новые товары"/>
+        </form>
+        <h2>Категории:</h2>
+
+        {% block categories %}
+
+        {% endblock %}
+        <a href="/"><button>Сбросить категорию</button></a>
+    </div>
+    <div class="right-column">
+        <form method="get" action="">
+            <input type="text" placeholder="Поиск..." name="product_name">
+            <input type="submit" value="Поиск">
+        </form>
+            {% block products %}
+
+            {% endblock %}
+    </div>
+</body>
+</html>

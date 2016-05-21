@@ -1,0 +1,10 @@
+body{
+    margin:30px;
+}
+.left-column{
+  float: left;
+  width: 300px;
+}
+.right-column{
+margin-left: 325px;
+}

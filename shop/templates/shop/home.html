@@ -1,0 +1,27 @@
+{% extends 'shop/base.html' %}
+        {% block categories %}
+            <form>
+                <ul>
+
+                    {% for category in categories %}
+
+                        <a href="{% url 'category' category.id%}"><li>{{   category.name }} ({{ category.get_quantity }})</li></a>
+                    {% endfor %}
+
+                </ul>
+            </form>
+        {% endblock %}
+        {% block products %}
+                <ul>
+                {% for product in products %}
+                    <li>
+                    <a href = "{% url 'product' product.id %}">
+
+                        {{ product.name }} |
+
+                        {{ product.price }} р.
+                    </a>
+                    </li>
+                {% endfor %}
+                </ul>
+        {% endblock %}
